@@ -2,6 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SpeakerService } from "@/services/SpeakerService";
+import { EventService } from "@/services/EventService";
 import { SessionService } from "@/services/SessionService";
 import { generateTimeInterval } from "@/utils/utils";
 import ImageWithFallback from "@/components/ImageWithFallback";
@@ -9,7 +10,18 @@ import { ShowMore } from "@/components/ShowMore";
 import { Calendar, Clock, MapPin } from "lucide-react";
 import { createMetadata } from "@/lib/seo";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
+
+export const generateStaticParams = async () => {
+  const event = await EventService.getLatest();
+  const edition = event ? event.id : 33;
+  let speakers = (await SpeakerService.getSpeakers({ event: edition })) || [];
+  if (!speakers || speakers.length === 0) {
+    // Fallback to fetching all speakers if event-specific list is empty
+    speakers = (await SpeakerService.getSpeakers()) || [];
+  }
+  return speakers.map((s) => ({ id: s.id }));
+};
 
 type Props = {
   params: {

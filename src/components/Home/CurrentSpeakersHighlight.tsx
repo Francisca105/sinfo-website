@@ -5,7 +5,7 @@ import { SpeakerService } from "@/services/SpeakerService";
 import { EventService } from "@/services/EventService";
 import { buildSpeakerColorMap } from "@/utils/speakerColors";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 interface CurrentSpeakersHighlightProps {
   backgroundClass?: string;

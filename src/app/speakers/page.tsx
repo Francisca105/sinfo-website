@@ -15,7 +15,7 @@ import { SessionService } from "@/services/SessionService";
 import { buildSpeakerColorMap } from "@/utils/speakerColors";
 import SpeakersFilterGrid from "@/components/Speakers/SpeakersFilterGrid";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 const SPEAKER_ORDER = {
   keynote: 0,

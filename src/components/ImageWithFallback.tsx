@@ -30,6 +30,7 @@ export default function ImageWithFallback({
       src={imgSrc}
       alt={alt}
       onError={handleError}
+      unoptimized
       sizes={sizes}
     />
   );

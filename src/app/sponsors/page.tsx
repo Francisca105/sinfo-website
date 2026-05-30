@@ -14,7 +14,7 @@ import GridList from "@/components/GridList";
 import CompanyCard from "@/components/CompanyCard";
 import SponsorHeading from "@/components/Companies/SponsorHeading";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 const mainSponsors: Company[] = [
   {
